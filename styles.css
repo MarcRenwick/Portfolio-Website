@@ -460,6 +460,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--sun); outline-off
 }
 .skill-list{ list-style:none; display:flex; flex-wrap:wrap; gap:.6rem; margin-top:auto; }
 .skill-list li{
+  display:inline-flex; align-items:center; gap:.5rem;
   border:1.5px solid var(--line); border-radius:999px; padding:.45rem 1.05rem;
   font-weight:600; font-size:clamp(1rem,1.3vw,1.15rem);
   opacity:0; transform:translateY(180%) rotate(var(--rot,0deg)) scale(.6);
@@ -468,6 +469,7 @@ a:focus-visible, button:focus-visible{ outline:3px solid var(--sun); outline-off
 }
 .skill-group.in .skill-list li{ opacity:1; transform:none; }
 .skill-list li:hover{ background:var(--acc); border-color:var(--acc); color:var(--deep); }
+.skill-icon{ width:1.1em; height:1.1em; fill:currentColor; flex:none; }
 
 /* =========================================================
    15. CASE STUDIES — sticky browser frame, drifting giant name
