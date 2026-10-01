@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<script>
+/* apply the saved theme before first paint so there is no flash */
+try { var t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rosario, Marc Renwick G. | Portfolio</title>
+<meta name="description" content="Marc Renwick G. Rosario, an aspiring web developer from Pangasinan, Philippines, building web apps with the MERN stack. Projects, skills and contact.">
+<meta name="theme-color" content="#26262A">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Rosario, Marc Renwick G. | Portfolio">
+<meta property="og:description" content="Aspiring web developer from Pangasinan, building web apps with the MERN stack.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2326262A'/%3E%3Ctext x='32' y='41' font-family='Arial,sans-serif' font-weight='700' font-size='24' text-anchor='middle' fill='%23F5F5F6'%3EMR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="loading">
+
+<div class="progress" aria-hidden="true"><span id="progress"></span></div>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-count" id="count">0</div>
+  <div class="loader-bar"><span id="bar"></span></div>
+  <p>Portfolio Loading.....</p>
+</div>
+
+<div class="cursor" aria-hidden="true"></div>
+
+<header class="nav">
+  <!-- CHANGE: your initials -->
+  <a href="#top" class="logo" data-magnetic aria-label="Back to top">MR</a>
+  <div class="nav-right">
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <!-- Dark / light switch. Dark is the default; the choice is remembered. -->
+    <button class="theme" id="theme" type="button" data-magnetic aria-pressed="false" aria-label="Switch to light mode" title="Switch to light mode">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z"/></svg>
+    </button>
+    <!-- Phones only: opens the full-screen menu below -->
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><i></i><i></i></button>
+  </div>
+</header>
+
+<div class="menu" id="menu">
+  <nav aria-label="Mobile">
+    <a href="#about" style="--i:0"><span>About</span></a>
+    <a href="#skills" style="--i:1"><span>Skills</span></a>
+    <a href="#work" style="--i:2"><span>Work</span></a>
+    <a href="#education" style="--i:3"><span>Education</span></a>
+    <a href="#contact" style="--i:4"><span>Contact</span></a>
+  </nav>
+  <p class="menu-foot" style="--i:5"><span>Open to internships and junior developer roles.</span></p>
+</div>
+
+<main>
+  <!-- =====================================================
+       1. HERO
+       ===================================================== -->
+  <section class="hero" id="top">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="hero-intro mask"><span style="--d:.05s">Hi, I'm</span></p>
+      <!-- CHANGE: your name. Use | to split it into lines -->
+      <h1 class="name" id="name" data-lines="Rosario,|Marc Renwick G."></h1>
+      <p class="hero-role mask"><span style="--d:.7s">Aspiring Web Developer from Pangasinan, building web apps with the MERN stack.</span></p>
+      <p class="hero-meta mask"><span style="--d:.85s">
+        <svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        Pangasinan, Philippines <span class="sep" aria-hidden="true">·</span> <time id="clock"></time>
+      </span></p>
+    </div>
+
+    <!-- PORTRAIT. CHANGE: swap assets/profile.jpg for another photo (portrait, about 4:5). If the file is missing, the MR placeholder shows. -->
+    <figure class="portrait">
+      <div class="portrait-frame">
+        <span class="portrait-ph" aria-hidden="true">MR</span>
+        <img src="assets/profile.jpg" alt="Portrait of Marc Renwick Rosario" onerror="this.remove()">
+      </div>
+      <div class="badge" aria-hidden="true">
+        <div class="badge-ring">
+          <svg viewBox="0 0 100 100">
+            <defs><path id="badgePath" d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"/></defs>
+            <text><textPath href="#badgePath" textLength="249" lengthAdjust="spacing">Open to internships ✺ MERN stack ✺ Pangasinan ✺ </textPath></text>
+          </svg>
+        </div>
+        <div class="badge-face">✺</div>
+      </div>
+    </figure>
+
+    <div class="scroll-cue" aria-hidden="true"><i></i>Scroll</div>
+  </section>
+
+  <!-- TOOLS -->
+  <section class="marquee" id="marquee" aria-label="Tools I use">
+    <div class="mq-row"></div>
+    <div class="mq-row alt"></div>
+  </section>
+
+  <!-- =====================================================
+       2. ABOUT ME
+       ===================================================== -->
+  <section class="about" id="about">
+    <p class="lede" id="lede">
+      "I'm learning to become a web developer by building real projects, from the database to the screen, and improving with every one."
+    </p>
+
+    <!-- Cards stack on top of each other as you scroll -->
+    <div class="qa">
+      <article class="qa-card" style="--i:0">
+        <p class="qa-k"><span>The spark</span><span>1 / 4</span></p>
+        <h3>How did I get into coding?</h3>
+        <!-- CHANGE: your own story, in one or two sentences -->
+        <p>I wanted to know how the apps I used every day actually worked. The first time something I wrote ran in a browser, I wanted to build more.</p>
+      </article>
+      <article class="qa-card" style="--i:1">
+        <p class="qa-k"><span>The degree</span><span>2 / 4</span></p>
+        <h3>What am I studying?</h3>
+        <!-- CHANGE: course, school, expected graduation year -->
+        <p>BS Information Technology at Your University, Pangasinan. I expect to graduate in 2027.</p>
+      </article>
+      <article class="qa-card" style="--i:2">
+        <p class="qa-k"><span>The goal</span><span>3 / 4</span></p>
+        <h3>What kind of developer do I want to be?</h3>
+        <p>A full-stack developer who builds practical tools for local communities, from farmers pricing a harvest to clinics keeping pet records in one place.</p>
+      </article>
+      <article class="qa-card" style="--i:3">
+        <p class="qa-k"><span>Off the clock</span><span>4 / 4</span></p>
+        <h3>Outside of code</h3>
+        <!-- CHANGE: a hobby or interest that makes you memorable -->
+        <p>Watching Anime, and playing video games.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       3. SKILLS
+       Only list what you've used in a real project.
+       ===================================================== -->
+  <section class="skills" id="skills">
+    <h2 class="sec-title mask reveal"><span>What I work with</span></h2>
+    <p class="sec-sub io">Every tool here shows up in at least one project below.</p>
+
+    <div class="skill-grid">
+      <div class="skill-group" style="--acc:var(--sun); --glow:color-mix(in srgb, var(--acc) 24%, transparent)">
+        <span class="skill-bar" aria-hidden="true"></span>
+        <div class="skill-head"><h3>Front-end</h3><span class="skill-n" aria-hidden="true">04</span></div>
+        <ul class="skill-list" data-stagger=".08"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>React</li></ul>
+      </div>
+      <div class="skill-group" style="--acc:var(--leaf); --glow:color-mix(in srgb, var(--acc) 24%, transparent)">
+        <span class="skill-bar" aria-hidden="true"></span>
+        <div class="skill-head"><h3>Back-end</h3><span class="skill-n" aria-hidden="true">02</span></div>
+        <ul class="skill-list" data-stagger=".08"><li>Node.js</li><li>Express</li></ul>
+      </div>
+      <div class="skill-group" style="--acc:var(--ink); --glow:color-mix(in srgb, var(--acc) 24%, transparent)">
+        <span class="skill-bar" aria-hidden="true"></span>
+        <div class="skill-head"><h3>Database</h3><span class="skill-n" aria-hidden="true">02</span></div>
+        <ul class="skill-list" data-stagger=".08"><li>MongoDB</li><li>Mongoose</li></ul>
+      </div>
+      <div class="skill-group" style="--acc:var(--sun); --glow:color-mix(in srgb, var(--acc) 24%, transparent)">
+        <span class="skill-bar" aria-hidden="true"></span>
+        <div class="skill-head"><h3>Tools</h3><span class="skill-n" aria-hidden="true">05</span></div>
+        <ul class="skill-list" data-stagger=".08"><li>Git</li><li>GitHub</li><li>VS Code</li><li>Postman</li><li>Claude Code</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       4. PROJECTS — showcase (pinned horizontal scroll)
+       ===================================================== -->
+  <section class="work" id="work">
+    <div class="work-sticky">
+      <div class="work-head">
+        <h2 class="mask reveal"><span>Things I'm building</span></h2>
+        <div class="work-progress" aria-hidden="true"><span id="workBar"></span></div>
+      </div>
+
+      <div class="work-track" id="track">
+        <article class="card" data-tilt>
+          <div class="scene farm" aria-hidden="true">
+            <div class="sun"></div>
+            <div class="chip">Estimated profit</div>
+            <div class="bars">
+              <i style="--h:30%;--i:0"></i><i style="--h:48%;--i:1"></i><i style="--h:40%;--i:2"></i>
+              <i style="--h:68%;--i:3"></i><i style="--h:90%;--i:4"></i>
+            </div>
+            <div class="ground"></div>
+          </div>
+          <div class="card-body">
+            <h3>AniSave</h3>
+            <p class="tagline">A marketplace where farmers sell straight to buyers.</p>
+            <p>Farmers list their harvest, get a recommended price for their municipality, and see estimated income and profit before they sell. Buyers browse, pre-order and post requests for crops they need, while admins approve accounts and watch demand.</p>
+            <ul class="tags"><li>MongoDB</li><li>Express</li><li>React</li><li>Node.js</li></ul>
+            <a class="card-link" href="#anisave">Read the case study ↓</a>
+          </div>
+        </article>
+
+        <!--
+        <article class="card" data-tilt>
+          <div class="scene pet" aria-hidden="true">
+            <svg class="pulse" viewBox="0 0 400 100" preserveAspectRatio="none">
+              <polyline points="0,50 110,50 130,50 145,12 162,90 178,28 192,50 260,50 275,38 288,50 400,50"/>
+            </svg>
+            <span class="paw" style="left:8%;top:10%;--r:-20deg;--i:0"></span>
+            <span class="paw" style="left:22%;top:16%;--r:-10deg;--i:1"></span>
+            <span class="paw" style="left:36%;top:8%;--r:-20deg;--i:2"></span>
+            <span class="paw" style="left:50%;top:14%;--r:-10deg;--i:3"></span>
+            <div class="remind">Rabies booster due Friday</div>
+          </div>
+          <div class="card-body">
+            <h3>PETCARE</h3>
+            <p class="tagline">One place for every pet's health, across clinics.</p>
+            <p>Pet owners keep vaccination and health records together, and veterinary clinics manage their own services. Care reminders and analytics show what pets in the area need. It starts with clinics in Dagupan and is designed to grow nationwide.</p>
+            <ul class="tags"><li>Multi-clinic</li><li>Health records</li><li>Reminders</li><li>Analytics</li></ul>
+            <a class="card-link" href="#petcare">Read the case study ↓</a>
+          </div>
+        </article>
+        -->
+
+        <article class="card" data-tilt>
+          <div class="scene lab" aria-hidden="true">
+            <div class="term">
+              <div class="term-bar"><i></i><i></i><i></i></div>
+              <div id="term"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3>Database labs</h3>
+            <p class="tagline">CRUD APIs, built from scratch.</p>
+            <p>A campus library API and a MERN task manager from my Advanced Database Systems course: Mongoose schemas, REST routes in Express, and a React front end that talks to them.</p>
+            <ul class="tags"><li>Mongoose</li><li>REST</li><li>React</li></ul>
+            <!--
+            <a class="card-link" href="#practice">See the practice projects ↓</a>
+            -->
+          </div>
+        </article>
+
+        <article class="card next" data-tilt>
+          <div class="next-inner">
+            <div class="star" aria-hidden="true">✺</div>
+            <h3>Your project could be next.</h3>
+            <a href="#contact" class="btn" data-magnetic>Start a conversation</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       4b. PROJECTS — case studies
+       ===================================================== -->
+  <article class="case" id="anisave" style="--acc:var(--sun)">
+    <div class="case-ghost-wrap" aria-hidden="true"><div class="case-ghost">AniSave AniSave</div></div>
+    <header class="case-head">
+      <p class="kicker io">Case study · Main project</p>
+      <h2 class="case-title mask reveal"><span>AniSave</span></h2>
+      <p class="case-sum io">A marketplace where farmers sell straight to buyers.</p>
+    </header>
+
+    <div class="case-grid">
+      <div class="case-media">
+        <div class="browser" data-tilt>
+          <div class="browser-bar"><i></i><i></i><i></i><span>https://ani-save.vercel.app/</span></div>
+          <div class="browser-view shot">
+            <a class="shot-link" href="assets/anisave-dashboard.png" target="_blank" rel="noopener" aria-label="Open the AniSave dashboard screenshot full size">
+              <img src="assets/anisave-dashboard.png" alt="AniSave farmer dashboard showing today's sales, revenue, profit, stock and demand analytics" width="1900" height="944" loading="lazy">
+            </a>
+          </div>
+        </div>
+        <!-- CHANGE: your repository and live demo links -->
+        <div class="case-links">
+          <a class="btn-line" href="https://github.com/MarcRenwick/AniSave" target="_blank" rel="noopener">GitHub repo ↗</a>
+          <a class="btn-line" href="https://ani-save.vercel.app/" target="_blank" rel="noopener">Live demo ↗</a>
+        </div>
+      </div>
+
+      <div class="case-info">
+        <div class="case-block io">
+          <h3>The problem</h3>
+          <p>Farmers often sell through middlemen and don't know what a fair price is for their crop in their own town. Buyers who want fresh produce have no direct way to reach them.</p>
+        </div>
+        <div class="case-block io">
+          <h3>My role</h3>
+          <!-- CHANGE: solo or team? which parts did you build? -->
+          <p>Full-stack developer. I designed the MongoDB schemas, built the Express API, and made the React screens for all three users: farmer, buyer and admin.</p>
+        </div>
+        <div class="case-block io">
+          <h3>Key features</h3>
+          <ul class="feat" data-stagger=".12">
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16"/><path d="M9 16.5l4.5 4.5L23 11.5"/></svg>
+              <div><b>Recommended pricing by municipality</b>Farmers see a suggested price for their area before they list a crop.</div></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16"/><path d="M9 16.5l4.5 4.5L23 11.5"/></svg>
+              <div><b>Income and profit estimates</b>Every listing shows the expected income and profit on the stock.</div></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16"/><path d="M9 16.5l4.5 4.5L23 11.5"/></svg>
+              <div><b>Pre-orders and crop requests</b>Buyers reserve a harvest early or post a request for crops they need.</div></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16"/><path d="M9 16.5l4.5 4.5L23 11.5"/></svg>
+              <div><b>Admin approvals and demand view</b>Admins verify accounts and see which crops are in demand.</div></li>
+          </ul>
+        </div>
+        <div class="case-block io">
+          <h3>Built with</h3>
+          <ul class="tags"><li>MongoDB</li><li>Mongoose</li><li>Express</li><li>React</li><li>Node.js</li></ul>
+        </div>
+        <div class="case-block learned io">
+          <h3>What I learned</h3>
+          <!-- CHANGE: one honest sentence about a challenge and how you solved it -->
+          <p>Building AniSave taught me to plan the data model before writing code, because changing how expenses are calculated meant reworking the schema, the API, and the screens together.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+<!--
+  <article class="case" id="petcare" style="--acc:var(--leaf)">
+    <div class="case-ghost-wrap" aria-hidden="true"><div class="case-ghost">PETCARE PETCARE</div></div>
+    <header class="case-head">
+      <p class="kicker io">Case study · Main project</p>
+      <h2 class="case-title mask reveal"><span>PETCARE</span></h2>
+      <p class="case-sum io">One place for every pet's health, across clinics.</p>
+    </header>
+
+    <div class="case-grid">
+      <div class="case-media">
+        <div class="browser" data-tilt>
+          <div class="browser-bar"><i></i><i></i><i></i><span>petcare.app/owner/records</span></div>
+          <div class="browser-view">
+             CHANGE: replace this animated scene with a real screenshot, e.g.
+                 <img src="assets/petcare.png" alt="PETCARE pet health record with vaccine reminders"> 
+            <div class="scene pet" aria-hidden="true">
+              <svg class="pulse" viewBox="0 0 400 100" preserveAspectRatio="none">
+                <polyline points="0,50 110,50 130,50 145,12 162,90 178,28 192,50 260,50 275,38 288,50 400,50"/>
+              </svg>
+              <span class="paw" style="left:8%;top:10%;--r:-20deg;--i:0"></span>
+              <span class="paw" style="left:22%;top:16%;--r:-10deg;--i:1"></span>
+              <span class="paw" style="left:36%;top:8%;--r:-20deg;--i:2"></span>
+              <span class="paw" style="left:50%;top:14%;--r:-10deg;--i:3"></span>
+              <div class="remind">Rabies booster due Friday</div>
+            </div>
+          </div>
+        </div>
+        CHANGE: your repository and live demo links 
+        <div class="case-links">
+          <a class="btn-line" href="https://github.com/" target="_blank" rel="noopener">GitHub repo ↗</a>
+          <a class="btn-line" href="#" target="_blank" rel="noopener">Live demo ↗</a>
+        </div>
+      </div>
+
+      <div class="case-info">
+        <div class="case-block io">
+          <h3>The problem</h3>
+          <p>Pet health records end up scattered across paper booklets and different clinics, so owners lose track of vaccines and vets can't see a pet's full history.</p>
+        </div>
+        <div class="case-block io">
+          <h3>My role</h3>
+         CHANGE: solo or team? which parts did you build? 
+          <p>Full-stack developer. I planned the multi-clinic data model and built the record, reminder and analytics features.</p>
+        </div>
+        <div class="case-block io">
+          <h3>Key features</h3>
+          <ul class="feat" data-stagger=".12">
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16"/><path d="M9 16.5l4.5 4.5L23 11.5"/></svg>
+              <div><b>Multi-clinic support</b>Each veterinary clinic manages its own services inside one shared system.</div></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16"/><path d="M9 16.5l4.5 4.5L23 11.5"/></svg>
+              <div><b>Vaccination and health records</b>An owner keeps every pet's history in one place, whichever clinic they visit.</div></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16"/><path d="M9 16.5l4.5 4.5L23 11.5"/></svg>
+              <div><b>Care reminders</b>Owners get a heads-up before the next vaccine or check-up is due.</div></li>
+            <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16"/><path d="M9 16.5l4.5 4.5L23 11.5"/></svg>
+              <div><b>Area analytics</b>Clinics see what pets in their area need most. It starts in Dagupan and is designed to grow nationwide.</div></li>
+          </ul>
+        </div>
+        <div class="case-block io">
+          <h3>Built with</h3>
+           CHANGE: confirm the stack you used 
+          <ul class="tags"><li>MongoDB</li><li>Express</li><li>React</li><li>Node.js</li></ul>
+        </div>
+        <div class="case-block learned io">
+          <h3>What I learned</h3>
+          CHANGE: one honest sentence about a challenge and how you solved it 
+          <p>[One honest sentence about a challenge you hit on PETCARE and how you solved it.]</p>
+        </div>
+      </div>
+    </div>
+  </article>
+  -->
+
+  <!-- =====================================================
+       4c. PRACTICE PROJECTS
+       ===================================================== 
+  <section class="practice" id="practice">
+    <h2 class="sec-title mask reveal"><span>Practice projects</span></h2>
+    <p class="sec-sub io">Smaller builds from my Advanced Database Systems labs, Modules 07 and 08.</p>
+
+    <div class="practice-grid" data-stagger=".15">
+      <article class="mini io" data-tilt>
+        <p class="mini-k">Module 07</p>
+        <h3>Campus Library API</h3>
+        <p>A REST API for managing a campus library's books, with Mongoose schemas and validation.</p>
+         CHANGE: match your real routes 
+        <ul class="routes" data-stagger=".09">
+          <li><b class="m get">GET</b>/api/books</li>
+          <li><b class="m post">POST</b>/api/books</li>
+          <li><b class="m put">PUT</b>/api/books/:id</li>
+          <li><b class="m del">DELETE</b>/api/books/:id</li>
+        </ul>
+        <div class="mini-foot">
+          <ul class="tags"><li>Express</li><li>Mongoose</li><li>REST</li></ul>
+          <a class="btn-line" href="https://github.com/" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </article>
+
+      <article class="mini io" data-tilt>
+        <p class="mini-k">Module 08</p>
+        <h3>MERN Task Manager</h3>
+        <p>A full MERN app: a React front end that creates, edits and completes tasks through an Express API.</p>
+         CHANGE: match your real routes 
+        <ul class="routes" data-stagger=".09">
+          <li><b class="m get">GET</b>/api/tasks</li>
+          <li><b class="m post">POST</b>/api/tasks</li>
+          <li><b class="m put">PATCH</b>/api/tasks/:id</li>
+          <li><b class="m del">DELETE</b>/api/tasks/:id</li>
+        </ul>
+        <div class="mini-foot">
+          <ul class="tags"><li>MongoDB</li><li>Express</li><li>React</li><li>Node.js</li></ul>
+          <a class="btn-line" href="https://github.com/" target="_blank" rel="noopener">Code ↗</a>
+        </div>
+      </article>
+    </div>
+  </section>
+  -->
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <h2 class="mask reveal"><span>How I build</span></h2>
+    <div class="steps" id="steps">
+      <div class="rail" aria-hidden="true"><span id="rail"></span></div>
+      <div class="step">
+        <span class="step-n">1</span>
+        <h3>Map the flow</h3>
+        <p>Before any code, I sketch who uses the system and what each person needs to do.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">2</span>
+        <h3>Model the data</h3>
+        <p>I design collections and relationships in MongoDB with Mongoose schemas, so the data matches how people actually work.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">3</span>
+        <h3>Build the API</h3>
+        <p>Express routes for every create, read, update and delete, tested one endpoint at a time until each one does exactly what it says.</p>
+      </div>
+      <div class="step">
+        <span class="step-n">4</span>
+        <h3>Shape the screens</h3>
+        <p>React pages that put the numbers people care about up front.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       5. EXPERIENCE
+       Left out until you have a real entry (internship, OJT, freelance,
+       org role, hackathon). To turn it on, remove the comment markers
+       around this section and fill in the entry.
+       =====================================================
+  <section class="practice" id="experience">
+    <h2 class="sec-title mask reveal"><span>Experience</span></h2>
+    <div class="practice-grid" data-stagger=".15">
+      <article class="mini io">
+        <p class="mini-k">Month 2026 – Month 2026</p>
+        <h3>Role, Company or Organization</h3>
+        <p>What you did, in one or two sentences, with the result if there is one.</p>
+        <div class="mini-foot"><ul class="tags"><li>React</li><li>Express</li></ul></div>
+      </article>
+    </div>
+  </section>
+  -->
+
+  <!-- =====================================================
+       6. EDUCATION
+       data-start / data-end drive the progress ring (school year
+       assumed to run August to June).
+       ===================================================== -->
+  <section class="edu" id="education">
+    <h2 class="sec-title mask reveal"><span>Education</span></h2>
+
+    <!-- CHANGE: years, course, school, honors, subjects -->
+    <div class="edu-card" data-start="2023" data-end="2027">
+      <div class="ring" aria-hidden="true">
+        <svg viewBox="0 0 100 100"><circle class="track" cx="50" cy="50" r="45"/><circle class="bar" cx="50" cy="50" r="45"/></svg>
+        <div class="ring-label"><b><span id="eduPct">0</span>%</b><span>of my degree</span></div>
+      </div>
+      <div class="edu-body">
+        <p class="edu-years">2023 – 2027 (expected)</p>
+        <h3>BS Information Technology</h3>
+        <p class="edu-school">Your University, Pangasinan</p>
+        <!-- Optional: <p class="edu-honors">Dean's Lister · GPA 1.50</p> -->
+        <h4>Relevant subjects</h4>
+        <ul class="tags"><li>Advanced Database Systems</li><li>Web Development</li><li>Data Structures and Algorithms</li><li>Object-Oriented Programming</li></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       7. CERTIFICATIONS AND ACHIEVEMENTS
+       Link each finished one to its proof.
+       ===================================================== -->
+       <!--
+  <section class="certs" id="certs">
+    <h2 class="sec-title mask reveal"><span>Certifications</span></h2>
+    <p class="sec-sub io">This list grows as I work through my learning path.</p>
+
+    <div class="cert-grid" data-stagger=".12">
+     CHANGE: when finished, set href to the certificate link and the status to the year 
+      <a class="cert" href="https://www.freecodecamp.org/learn" target="_blank" rel="noopener">
+        <span class="cert-seal" aria-hidden="true">✺</span>
+        <p class="cert-issuer">freeCodeCamp</p>
+        <h3>Responsive Web Design</h3>
+        <p class="cert-meta"><span class="cert-status">In progress</span><span aria-hidden="true">↗</span></p>
+      </a>
+      <div class="cert cert-next">
+        <span class="cert-seal" aria-hidden="true">✺</span>
+        <p class="cert-issuer">freeCodeCamp</p>
+        <h3>JavaScript Algorithms and Data Structures</h3>
+        <p class="cert-meta"><span>Next up</span></p>
+      </div>
+      <div class="cert cert-next">
+        <span class="cert-seal" aria-hidden="true">✺</span>
+        <p class="cert-issuer">Seminars and awards</p>
+        <h3>Workshop certificates and academic awards go here</h3>
+        <p class="cert-meta"><span>Coming soon</span></p>
+      </div>
+    </div>
+  </section>
+
+-->
+
+  <!-- =====================================================
+       8. CONTACT
+       ===================================================== -->
+  <section class="contact" id="contact">
+    <div class="contact-top">
+      <p class="status"><i class="live" aria-hidden="true"></i>Open to internships and junior developer roles.</p>
+      <h2 class="big-fill" id="fill" data-text="Let's build something.">Let's build something.</h2>
+    </div>
+    <div class="contact-row">
+      <!-- CHANGE: your email (ideally firstname.lastname@gmail.com) -->
+      <a class="mail" href="mailto:marcrenwickrosario95@gmail.com" data-magnetic>marcrenwickrosario95@gmail.com</a>
+      <!-- CHANGE: put your resume next to index.html as resume.pdf -->
+      <a class="btn-line" href="resume.pdf" download>Download résumé (PDF) ↓</a>
+      <p>Have a project, an opportunity, or feedback on my code? I'd like to hear it.</p>
+    </div>
+    <footer class="foot">
+      <span>© 2026 Rosario, Marc Renwick G. Hand-coded with HTML, CSS and JavaScript.</span>
+      <!-- CHANGE: your profile links -->
+      <nav aria-label="Profiles">
+        <a href="https://github.com/MarcRenwick" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/marc-renwick-rosario-98529b395/" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </footer>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
